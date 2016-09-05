@@ -9,11 +9,17 @@ import (
 
 func main() {
 
+	// get application name
+	appName := os.Getenv("APP_NAME")
+	if (appName == "") {
+		appName = "vault"
+	}
+
 	// get newrelic license key
-	licence := os.Getenv("licence")
+	licence := os.Getenv("LICENCE_KEY")
 
 	// Create a newrelic config.
-	config := newrelic.NewConfig("vault", licence)
+	config := newrelic.NewConfig(appName, licence)
 
 	// newrelic not enabled if there is no licence
 	if ("" != licence) {
