@@ -7,7 +7,7 @@ import (
 	"github.com/hashicorp/vault/cli"
 )
 
-func main() {
+func setupNewRelic() {
 
 	// get application name
 	appName := os.Getenv("APP_NAME")
@@ -41,6 +41,14 @@ func main() {
 			fmt.Println("An error has occurred starting New relic. Exiting Vault.")
 			fmt.Println(err)
 			os.Exit(1)
+	}
+
+}
+
+func main() {
+
+	if (os.Args[1] == "server") {
+		setupNewRelic()
 	}
 
 	os.Exit(cli.Run(os.Args[1:]))
