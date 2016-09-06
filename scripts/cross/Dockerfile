@@ -21,6 +21,9 @@ ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 RUN go get github.com/mitchellh/gox
 
+# get newrelic agent package
+RUN go get github.com/newrelic/go-agent
+
 RUN mkdir -p /gopath/src/github.com/hashicorp/vault
 WORKDIR /gopath/src/github.com/hashicorp/vault
 CMD make bin
