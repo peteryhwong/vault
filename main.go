@@ -25,7 +25,7 @@ func setupNewRelic() {
 	}
 
 	// Log newrelic to stdout
-	if (os.Getnev("NEW_RELIC_DEBUG") != "") {
+	if (os.Getenv("NEW_RELIC_DEBUG") != "") {
 		fmt.Println("New relic debug enabled")
 		config.Logger = newrelic.NewDebugLogger(os.Stdout)
 	} else {
