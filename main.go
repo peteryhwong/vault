@@ -3,7 +3,7 @@ package main // import "github.com/hashicorp/vault"
 import (
 	"os"
 	"fmt"
-  "github.com/newrelic/go-agent" 	//import newrelic agent
+	"github.com/newrelic/go-agent" 	//import newrelic agent
 	"github.com/hashicorp/vault/cli"
 )
 
@@ -33,19 +33,20 @@ func setupNewRelic() {
 	}
 
 	// Create the newrelic application
-  _, err := newrelic.NewApplication(config)
+	_, err := newrelic.NewApplication(config)
 
-  // exit if an error has occurred in creating the newrelic application
-	if err != nil {
-			fmt.Println("An error has occurred starting New relic. Exiting Vault.")
-			fmt.Println(err)
-			os.Exit(1)
+	// exit if an error has occurred in creating the newrelic application
+	if (err != nil) {
+		fmt.Println("An error has occurred starting New relic. Exiting Vault.")
+		fmt.Println(err)
+		os.Exit(1)
 	}
 
 }
 
 func main() {
 
+	// Only add newrelic if starting in server mode
 	if (os.Args[1] == "server") {
 		setupNewRelic()
 	}
